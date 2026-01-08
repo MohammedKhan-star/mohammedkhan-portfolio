@@ -18,7 +18,7 @@ export default function Skills() {
           viewport={{ once: true }}
           className="text-3xl font-bold mb-12 text-white"
         >
-          Skills
+          Technical Skills
         </motion.h2>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
