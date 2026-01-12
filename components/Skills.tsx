@@ -76,8 +76,8 @@ export default function Skills() {
                   <Image
                     src={skill.logo}
                     alt={skill.name}
-                    width={56}
-                    height={56}
+                    width={120}
+                    height={60}
                     className="mb-4"
                   />
 

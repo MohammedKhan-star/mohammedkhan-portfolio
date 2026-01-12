@@ -75,7 +75,7 @@ export const skillCategories = [
 {
   title: "Other Skills",
   skills: [
-    { name: "Microsoft Office", logo: "/skills/microsoftoffice.png" },
+    { name: "Microsoft Office", logo: "/skills/microsoft.png" },
     { name: "Gmail & Professional Email", logo: "/skills/gmail.png" },
     { name: "Typing & Documentation", logo: "/skills/typing.png" },
     { name: "Time Management", logo: "/skills/timemanagement.png" },
