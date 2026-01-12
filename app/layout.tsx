@@ -1,5 +1,6 @@
 // app/layout.tsx
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import ThemeWrapper from "./theme-wrapper";
 
@@ -61,7 +62,10 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body>
-        <ThemeWrapper>{children}</ThemeWrapper>
+        <ThemeWrapper >{children}
+        <Analytics />
+        </ThemeWrapper>
+        
       </body>
     </html>
   );
