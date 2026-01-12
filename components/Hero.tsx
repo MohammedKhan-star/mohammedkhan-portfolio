@@ -13,6 +13,7 @@ const roles = [
   "End-to-end development: frontend, backend, APIs, and deployment",
   "Specialized in MERN stack, Next.js, and OpenAI API integrations",
   "Passionate about clean code, responsive design, and intuitive UX",
+   "“I can build, deploy, and maintain real production applications."
 ];
 
 export default function Hero() {

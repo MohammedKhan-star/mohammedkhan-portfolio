@@ -24,7 +24,7 @@ export default function Contact() {
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (formData.honeypot) return; // spam protection
+    if (formData.honeypot) return;
 
     setLoading(true);
 
@@ -44,84 +44,106 @@ export default function Contact() {
         setFormData({ name: "", email: "", message: "", honeypot: "" });
         setLoading(false);
       })
-      .catch((err) => {
-        console.error("EmailJS Error:", err);
+      .catch(() => {
         setStatus("Oops! Something went wrong. Please try again.");
         setLoading(false);
       });
   };
 
   return (
-    <section id="contact" className="py-24 px-6 bg-gray-50 dark:bg-gray-900">
-      <div className="max-w-2xl mx-auto text-center space-y-6">
+    <section
+      id="contact"
+      className="
+        relative py-24 px-6 overflow-hidden
+        bg-gradient-to-br from-slate-900 via-gray-900 to-black
+        dark:from-gray-950 dark:via-gray-900 dark:to-black
+      "
+    >
+      {/* 🔥 Decorative glow blobs */}
+      <div className="absolute -top-40 -left-40 w-[500px] h-[500px] bg-blue-500/20 rounded-full blur-3xl" />
+      <div className="absolute bottom-0 -right-40 w-[500px] h-[500px] bg-purple-500/20 rounded-full blur-3xl" />
+
+      <div className="relative max-w-2xl mx-auto text-center">
+        {/* Title */}
         <motion.h2
-          className="text-3xl font-bold"
+          className="text-3xl md:text-4xl font-bold text-white mb-6"
           initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
         >
           Get In Touch
         </motion.h2>
 
-        <p className="text-gray-600 dark:text-gray-300">
+        <p className="text-gray-300 mb-10">
           Reach me directly at{" "}
           <a
             href="mailto:mohammedkhan20019@gmail.com"
-            className="text-blue-600 hover:underline"
+            className="text-blue-400 hover:underline"
           >
             mohammedkhan20019@gmail.com
           </a>{" "}
-          or through the form below.
+          or send a message below.
         </p>
 
         {/* Social Links */}
-        <div className="flex justify-center flex-wrap gap-4 mt-4">
-          <a
-            href="https://github.com/MohammedKhan-star"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-6 py-3 rounded-xl border flex items-center gap-2 hover:bg-gray-100 dark:hover:bg-gray-800 transition"
-          >
-            <Github size={18} />
-            GitHub
-          </a>
-
-          <a
-            href="https://www.linkedin.com/in/mohammed-khan-7905a621a/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-6 py-3 rounded-xl border flex items-center gap-2 hover:bg-gray-100 dark:hover:bg-gray-800 transition"
-          >
-            <Linkedin size={18} />
-            LinkedIn
-          </a>
-
-          <a
-            href="https://mail.google.com/mail/?view=cm&fs=1&to=mohammedkhan20019@gmail.com&su=Portfolio%20Inquiry&body=Hi%20Mohammed,%0A%0AI%20visited%20your%20portfolio%20and%20would%20like%20to%20connect."
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-6 py-3 rounded-xl border flex items-center gap-2 hover:bg-gray-100 dark:hover:bg-gray-800 transition"
-          >
-            <Mail size={18} />
-            Mail
-          </a>
-
-          <a
-            href="/resume.pdf"
-            download
-            className="px-6 py-3 rounded-xl border flex items-center gap-2 hover:bg-gray-100 dark:hover:bg-gray-800 transition"
-          >
-            <Download size={18} />
-            Resume
-          </a>
+        <div className="flex justify-center flex-wrap gap-4 mb-12">
+          {[
+            {
+              icon: <Github size={18} />,
+              label: "GitHub",
+              link: "https://github.com/MohammedKhan-star",
+            },
+            {
+              icon: <Linkedin size={18} />,
+              label: "LinkedIn",
+              link: "https://www.linkedin.com/in/mohammed-khan-7905a621a/",
+            },
+            {
+              icon: <Mail size={18} />,
+              label: "Mail",
+              link: "https://mail.google.com/mail/?view=cm&fs=1&to=mohammedkhan20019@gmail.com",
+            },
+            {
+              icon: <Download size={18} />,
+              label: "Resume",
+              link: "/resume.pdf",
+              download: true,
+            },
+          ].map((item) => (
+            <a
+              key={item.label}
+              href={item.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              download={item.download}
+              className="
+                px-6 py-3 rounded-xl border border-white/20
+                flex items-center gap-2
+                text-white
+                bg-white/5 backdrop-blur-md
+                hover:bg-white/10 transition
+              "
+            >
+              {item.icon}
+              {item.label}
+            </a>
+          ))}
         </div>
 
         {/* Contact Form */}
         <motion.form
           onSubmit={handleSubmit}
-          className="mt-8 flex flex-col gap-4 text-left"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4, duration: 0.6 }}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="
+            bg-white/90 dark:bg-gray-800/80
+            backdrop-blur-lg
+            rounded-2xl p-8
+            shadow-xl
+            flex flex-col gap-4 text-left
+          "
         >
           <input
             type="text"
@@ -164,15 +186,19 @@ export default function Contact() {
           <button
             type="submit"
             disabled={loading}
-            className="bg-blue-600 text-white py-3 rounded-xl hover:bg-blue-700 transition"
+            className="
+              bg-blue-600 text-white py-3 rounded-xl
+              hover:bg-blue-700 transition
+              disabled:opacity-60
+            "
           >
-            {loading ? "Sending..." : "Submit"}
+            {loading ? "Sending..." : "Send Message"}
           </button>
 
           {status && (
             <p
-              className={`mt-2 ${
-                status.includes("successfully")
+              className={`text-sm text-center ${
+                status.includes("success")
                   ? "text-green-500"
                   : "text-red-500"
               }`}

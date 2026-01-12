@@ -1,44 +1,80 @@
 "use client";
+
 import { motion } from "framer-motion";
 import { projects } from "@/data/projects";
-import type { Metadata } from "next";
+import Image from "next/image";
 
-export const metadata: Metadata = {
-  title: "Mohammad Khan | Full Stack Developer",
-  description:
-    "Full Stack Developer specializing in MERN stack and Next.js. Building scalable, fast, and modern web applications.",
-};
 export default function Projects() {
   return (
-    <section id="projects" className="py-24 px-6 bg-gray-50 dark:bg-gray-900">
-      <div className="max-w-6xl mx-auto text-center">
-        <h2 className="text-3xl font-bold mb-12 text-gray-800 dark:text-gray-100">
-          Projects
-        </h2>
+    <section
+      id="projects"
+      className="
+        relative py-24 px-6 overflow-hidden
+        bg-gradient-to-br from-slate-900 via-gray-900 to-black
+        dark:from-gray-950 dark:via-gray-900 dark:to-black
+      "
+    >
+      {/* 🔥 Decorative background glows */}
+      <div className="absolute -top-40 -left-40 w-[500px] h-[500px] bg-blue-500/20 rounded-full blur-3xl" />
+      <div className="absolute bottom-0 -right-40 w-[500px] h-[500px] bg-purple-500/20 rounded-full blur-3xl" />
 
-        <div className="grid md:grid-cols-3 gap-8">
-          {projects.map(project => (
+      <div className="relative max-w-6xl mx-auto text-center">
+        {/* Title */}
+        <motion.h2
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="text-3xl md:text-4xl font-bold mb-16 text-white"
+        >
+          Featured Projects
+        </motion.h2>
+
+        {/* Projects Grid */}
+        <div className="grid md:grid-cols-3 gap-10">
+          {projects.map((project, index) => (
             <motion.div
               key={project.title}
-              className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow cursor-pointer"
-              whileHover={{ scale: 1.05 }}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1, duration: 0.5 }}
+              viewport={{ once: true }}
+              whileHover={{ y: -8, scale: 1.03 }}
+              className="
+                bg-white/90 dark:bg-gray-800/80
+                backdrop-blur-lg
+                rounded-2xl overflow-hidden
+                shadow-lg hover:shadow-2xl
+                transition-all text-left
+              "
             >
-              <img
+              {/* Project Image */}
+              <Image
                 src={project.image}
                 alt={project.title}
+                width={600}
+                height={400}
                 className="w-full h-48 object-cover"
               />
-              <div className="p-6 text-left">
-                <h3 className="text-xl font-semibold text-gray-800 dark:text-white">
+
+              {/* Content */}
+              <div className="p-6">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
                   {project.title}
                 </h3>
-                <p className="mt-3 text-gray-600 dark:text-gray-300">
+
+                <p className="mt-3 text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
                   {project.description}
                 </p>
+
                 <a
                   href={project.link}
                   target="_blank"
-                  className="mt-4 inline-block text-blue-600 dark:text-blue-400 font-medium hover:underline"
+                  className="
+                    inline-block mt-5
+                    text-blue-600 dark:text-blue-400
+                    font-semibold hover:underline
+                  "
                 >
                   Live Demo →
                 </a>
