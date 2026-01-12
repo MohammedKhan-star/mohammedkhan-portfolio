@@ -1,7 +1,13 @@
 "use client";
 import { motion } from "framer-motion";
 import { projects } from "@/data/projects";
+import type { Metadata } from "next";
 
+export const metadata: Metadata = {
+  title: "Mohammad Khan | Full Stack Developer",
+  description:
+    "Full Stack Developer specializing in MERN stack and Next.js. Building scalable, fast, and modern web applications.",
+};
 export default function Projects() {
   return (
     <section id="projects" className="py-24 px-6 bg-gray-50 dark:bg-gray-900">
