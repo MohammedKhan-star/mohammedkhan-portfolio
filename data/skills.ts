@@ -17,7 +17,7 @@ export const skillCategories = [
   {
     title: "Backend",
     skills: [
-      { name: "Node.js", logo: "/skills/node.png" },
+      { name: "Node.js", logo: "/skills/nodejs.png" },
       { name: "Express.js", logo: "/skills/expressjs.png" },
       { name: "REST APIs", logo: "/skills/rest.png" },
       { name: "JWT Authentication", logo: "/skills/jwt.png" },
