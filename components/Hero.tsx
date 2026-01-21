@@ -141,6 +141,15 @@ export default function Hero() {
           <Download size={18} />
           Resume
         </a>
+        <a
+          href="https://mail.google.com/mail/?view=cm&fs=1&to=mohammedkhan20019@gmail.com&su=Portfolio%20Inquiry&body=Hi%20Mohammed,%0A%0AI%20visited%20your%20portfolio%20and%20would%20like%20to%20connect."
+          target="_blank"
+          rel="noopener noreferrer"
+          className="px-6 py-3 rounded-xl border flex items-center gap-2 hover:bg-gray-100 dark:hover:bg-gray-800 transition"
+        >
+          <Mail size={18} />
+          My Service
+        </a>
       </motion.div>
 
       {/* Tech stack */}

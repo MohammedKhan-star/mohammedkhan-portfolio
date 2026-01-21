@@ -18,14 +18,14 @@ export const projects = [
     description:
       "Next.js e-commerce platform with AI-powered product recommendations and admin panel.",
     link: "https://gocart-xqlp.vercel.app/",
-    image: "/project/AI Ecommerce2.PNG"
+    image: "/project/AIEcommerce2.PNG"
   },
   {
     title: "Video Streaming Platform (React.js, Vite, YouTube API)",
     description:
       "Next.js e-commerce platform with AI-powered product recommendations and admin panel.",
     link: "https://youtube-clone-4-glwf.onrender.com/",
-    image: "/project/Youtube clone 1.PNG"
+    image: "/project/Youtubeclone1.PNG"
   },
   {
     title: "E-COMMERCE PLATFORM (NXTTRENDZ)",
