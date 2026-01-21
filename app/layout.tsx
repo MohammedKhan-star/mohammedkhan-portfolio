@@ -1,5 +1,6 @@
 // app/layout.tsx
 import type { Metadata } from "next";
+import Link from "next/link";
 
 import "./globals.css";
 import ThemeWrapper from "./theme-wrapper";
@@ -104,6 +105,7 @@ export default function RootLayout({
 
       <body>
         <ThemeWrapper>{children}</ThemeWrapper>
+      
       </body>
     </html>
   );
