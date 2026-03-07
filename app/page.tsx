@@ -10,7 +10,7 @@ import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
-  title: "Mohammad Khan | Full Stack Developer",
+  title: "Mohammad Khan | Full Stack Developer | Founder of project works studio | Software Engineer",
   description:
     "Full Stack Developer specializing in MERN stack and Next.js. Building scalable, fast, and modern web applications.",
 };
