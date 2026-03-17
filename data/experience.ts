@@ -8,6 +8,13 @@ export const experiences = [
     details: "Building AI-powered platforms, MERN apps, and learning management systems.Specializing in software development and AI integration. Key projects include AI-based food delivery app, e-commerce platform, and portfolio website. Technologies: React.js, Next.js, Node.js, MongoDB, Tailwind CSS, OpenAI APIs. Deployed on Vercel and Render.  "
   },
   {
+    logo:'/experience/nxt.png',                    
+    role: "Full Stack Enginer",
+    company: "IntenShip",
+    duration: "2026 - 2026",
+    details: "Building AI-powered platforms, MERN apps, and learning management systems.Specializing in software development and AI integration. Key projects include AI-based food delivery app, e-commerce platform, and portfolio website. Technologies: React.js, Next.js, Node.js, MongoDB, Tailwind CSS, OpenAI APIs. Deployed on Vercel and Render.  "
+  },
+  {
     logo:"/experience/madina.png",
     role: "Computer Instructor and IT Support",
     company: "Madina Tul Uloom High School",
