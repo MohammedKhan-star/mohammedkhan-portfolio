@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
 import { skillCategories } from "@/data/skills";
 
 export default function Skills() {
@@ -9,86 +8,140 @@ export default function Skills() {
     <section
       id="skills"
       className="
-        relative py-24 px-6 overflow-hidden
-        bg-gradient-to-br from-slate-900 via-indigo-900 to-blue-900
-        dark:from-gray-950 dark:via-gray-900 dark:to-gray-800
+        relative overflow-hidden
+        bg-gradient-to-br from-slate-950 via-indigo-950 to-blue-950
+        px-6 py-24
+        dark:from-black dark:via-gray-950 dark:to-slate-900
       "
     >
-      {/* Decorative blurred background shapes */}
-      <div className="absolute -top-32 -left-32 w-96 h-96 bg-indigo-500/20 rounded-full blur-3xl" />
-      <div className="absolute top-1/2 -right-32 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl" />
+      {/* Background Effects */}
+      <div className="pointer-events-none absolute -left-40 -top-40 h-96 w-96 rounded-full bg-indigo-500/10 blur-3xl" />
+      <div className="pointer-events-none absolute -right-40 top-1/3 h-96 w-96 rounded-full bg-blue-500/10 blur-3xl" />
+      <div className="pointer-events-none absolute bottom-0 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-purple-500/10 blur-3xl" />
 
-      <div className="relative max-w-6xl mx-auto">
-        {/* Section Title */}
-        <motion.h2
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          viewport={{ once: true }}
-          className="
-            text-3xl md:text-4xl font-bold tracking-wide
-            text-center mb-20 text-white
-          "
-        >
-          Skills & Expertise
-        </motion.h2>
+      <div className="relative mx-auto max-w-7xl">
+
+        {/* Section Header */}
+        <div className="mx-auto mb-20 max-w-3xl text-center">
+          <p className="mb-4 text-sm font-semibold uppercase tracking-[0.25em] text-blue-300">
+            Technology Stack
+          </p>
+
+          <h2 className="text-4xl font-bold tracking-tight text-white md:text-5xl">
+            Skills & Expertise
+          </h2>
+
+          <p className="mt-6 text-base leading-7 text-white/60 md:text-lg">
+            Technologies and tools I use to design, develop and deliver
+            modern digital products, business applications and scalable
+            software solutions.
+          </p>
+        </div>
 
         {/* Skill Categories */}
-        {skillCategories.map((category, i) => (
-          <motion.div
-            key={category.title}
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: i * 0.1 }}
-            viewport={{ once: true }}
-            className="mb-12"
-          >
-            {/* Category Title */}
-            <h3 className="text-xl font-semibold mb-8 text-white/90">
-              {category.title}
-            </h3>
+        <div className="space-y-16">
+          {skillCategories.map((category) => (
+            <div key={category.title}>
 
-            {/* Skills Grid */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8">
-              {category.skills.map((skill, index) => (
-                <motion.div
-                  key={skill.name}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{
-                    delay: index * 0.02,
-                    type: "spring",
-                    stiffness: 220,
-                  }}
-                  viewport={{ once: true }}
-                  whileHover={{
-                    scale: 1.06,
-                    y: -4,
-                  }}
-                  className="
-                    p-6 rounded-2xl flex flex-col items-center text-center
-                    bg-white/90 dark:bg-gray-800/80
-                    backdrop-blur-md
-                    shadow-lg hover:shadow-2xl
-                    transition-all cursor-pointer
-                  "
-                >
-                  <Image
-                    src={skill.logo}
-                    alt={skill.name}
-                    width={40}
-                    height={60}
-                    className="mb-4"
-                  />
+              {/* Category Header */}
+              <div className="mb-7 flex items-center gap-4">
+                <div className="h-px flex-1 bg-white/10" />
 
-                  <p className="font-semibold text-gray-800 dark:text-gray-100 text-sm">
-                    {skill.name}
-                  </p>
-                </motion.div>
-              ))}
+                <h3 className="whitespace-nowrap text-sm font-semibold uppercase tracking-[0.18em] text-white/80">
+                  {category.title}
+                </h3>
+
+                <div className="h-px flex-1 bg-white/10" />
+              </div>
+
+              {/* Skills Grid */}
+              <div
+                className="
+                  grid grid-cols-2 gap-4
+                  sm:grid-cols-3
+                  md:grid-cols-4
+                  lg:grid-cols-5
+                  xl:grid-cols-6
+                "
+              >
+                {category.skills.map((skill) => (
+                  <div
+                    key={skill.name}
+                    className="
+                      group
+                      flex min-h-[150px]
+                      flex-col items-center justify-center
+                      rounded-2xl
+                      border border-white/10
+                      bg-white/[0.06]
+                      px-4 py-6
+                      text-center
+                      backdrop-blur-sm
+                      transition-colors duration-200
+                      hover:border-white/20
+                      hover:bg-white/[0.10]
+                    "
+                  >
+                    {/* Logo */}
+                    <div
+                      className="
+                        flex h-16 w-16
+                        items-center justify-center
+                        rounded-2xl
+                        bg-white
+                        p-3
+                        shadow-lg
+                      "
+                    >
+                      <Image
+                        src={skill.logo}
+                        alt={`${skill.name} logo`}
+                        width={42}
+                        height={42}
+                        className="h-10 w-10 object-contain"
+                      />
+                    </div>
+
+                    {/* Skill Name */}
+                    <p
+                      className="
+                        mt-5
+                        text-sm font-semibold
+                        text-white
+                        group-hover:text-blue-200
+                      "
+                    >
+                      {skill.name}
+                    </p>
+                  </div>
+                ))}
+              </div>
             </div>
-          </motion.div>
-        ))}
+          ))}
+        </div>
+
+        {/* Bottom Statement */}
+        <div
+          className="
+            mt-20
+            rounded-3xl
+            border border-white/10
+            bg-white/[0.05]
+            px-6 py-8
+            text-center
+            backdrop-blur-sm
+            md:px-10
+          "
+        >
+          <p className="text-lg font-semibold text-white md:text-xl">
+            Technology is a tool.
+          </p>
+
+          <p className="mx-auto mt-2 max-w-2xl text-sm leading-6 text-white/50 md:text-base">
+            The real goal is to use the right technology to solve the right
+            problem and create meaningful value for the client.
+          </p>
+        </div>
       </div>
     </section>
   );
