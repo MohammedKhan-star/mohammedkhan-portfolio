@@ -1,135 +1,135 @@
+
 "use client";
 
-import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
-import { Sun, Moon, Menu, X } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState } from "react";
+import {
+  ArrowUpRight,
+  Menu,
+  X,
+} from "lucide-react";
+
+const navigation = [
+  { name: "About", href: "#about" },
+  { name: "Expertise", href: "#expertise" },
+  { name: "Experience", href: "#experience" },
+  { name: "Projects", href: "#projects" },
+];
 
 export default function Navbar() {
-  const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  const navLinks = [
-    { label: "Home", href: "#" },
-    { label: "About", href: "#about" },
-    { label: "Skills", href: "#skills" },
-    { label: "Experience", href: "#experience" },
-    { label: "Projects", href: "#projects" },
-    { label: "Contact", href: "#contact" },
-  ];
-
-  if (!mounted) return null;
+  const [open, setOpen] = useState(false);
 
   return (
-    <nav
-      className="
-        fixed top-0 w-full z-50
-        bg-white/80 dark:bg-gray-900/80
-        backdrop-blur-lg
-        border-b border-gray-200/50 dark:border-gray-800/50
-      "
-    >
-      <div className="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
-        {/* Logo */}
-        <span className="text-xl font-bold tracking-wide text-gray-900 dark:text-white">
-          Mohammed Khan
-        </span>
-
-        {/* Desktop Navigation */}
-        <ul className="hidden md:flex items-center gap-8 text-sm font-medium">
-          {navLinks.map((link) => (
-            <li key={link.label}>
-              <a
-                href={link.href}
-                className="
-                  text-gray-700 dark:text-gray-300
-                  hover:text-blue-600 dark:hover:text-blue-400
-                  transition-colors
-                "
-              >
-                {link.label}
-              </a>
-            </li>
-          ))}
-        </ul>
-
-        {/* Actions */}
-        <div className="flex items-center gap-2">
-          {/* Theme Toggle */}
-          <button
-            aria-label="Toggle Theme"
-            onClick={() =>
-              setTheme(theme === "light" ? "dark" : "light")
-            }
-            className="
-              p-2 rounded-lg border
-              border-gray-300 dark:border-gray-700
-              hover:bg-gray-200 dark:hover:bg-gray-700
-              transition
-            "
+    <header className="fixed inset-x-0 top-0 z-50">
+      <div className="mx-auto max-w-7xl px-4 pt-4 sm:px-6 lg:px-8">
+        <nav className="flex h-16 items-center justify-between rounded-2xl border border-black/10 bg-white/80 px-5 shadow-lg shadow-black/5 backdrop-blur-xl dark:border-white/10 dark:bg-black/70">
+          
+          {/* Brand */}
+          <a
+            href="#home"
+            onClick={() => setOpen(false)}
+            className="group flex items-center gap-3"
           >
-            {theme === "light" ? (
-              <Moon size={18} />
-            ) : (
-              <Sun size={18} />
-            )}
-          </button>
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-black text-sm font-bold text-white transition-transform group-hover:scale-105 dark:bg-white dark:text-black">
+              MK
+            </div>
+
+            <div className="hidden sm:block">
+              <p className="text-sm font-bold tracking-tight text-gray-950 dark:text-white">
+                MOHAMMED KHAN
+              </p>
+
+              <p className="text-[10px] font-medium uppercase tracking-[0.18em] text-gray-500 dark:text-gray-400">
+                Founder · Software Engineer
+              </p>
+            </div>
+          </a>
+
+          {/* Desktop Navigation */}
+          <div className="hidden items-center gap-1 md:flex">
+            {navigation.map((item) => (
+              <a
+                key={item.name}
+                href={item.href}
+                className="rounded-lg px-4 py-2 text-sm font-medium text-gray-600 transition hover:bg-black/5 hover:text-black dark:text-gray-300 dark:hover:bg-white/10 dark:hover:text-white"
+              >
+                {item.name}
+              </a>
+            ))}
+          </div>
+
+          {/* Right Actions */}
+          <div className="hidden items-center gap-3 md:flex">
+            <a
+              href="https://stackratechnologies.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-semibold text-gray-700 transition hover:text-black dark:text-gray-300 dark:hover:text-white"
+            >
+              STACKRA
+              <ArrowUpRight
+                size={15}
+                className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+              />
+            </a>
+
+            <a
+              href="#contact"
+              className="inline-flex items-center gap-2 rounded-xl bg-black px-4 py-2.5 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:shadow-lg dark:bg-white dark:text-black"
+            >
+              Start a Project
+              <ArrowUpRight size={16} />
+            </a>
+          </div>
 
           {/* Mobile Menu Button */}
           <button
-            aria-label="Toggle Menu"
-            className="
-              md:hidden p-2 rounded-lg border
-              border-gray-300 dark:border-gray-700
-              hover:bg-gray-200 dark:hover:bg-gray-700
-              transition
-            "
-            onClick={() => setMenuOpen((prev) => !prev)}
+            type="button"
+            aria-label={open ? "Close menu" : "Open menu"}
+            onClick={() => setOpen(!open)}
+            className="rounded-xl p-2 text-gray-800 transition hover:bg-black/5 md:hidden dark:text-white dark:hover:bg-white/10"
           >
-            {menuOpen ? <X size={22} /> : <Menu size={22} />}
+            {open ? <X size={23} /> : <Menu size={23} />}
           </button>
-        </div>
-      </div>
+        </nav>
 
-      {/* Mobile Menu */}
-      <AnimatePresence>
-        {menuOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.25 }}
-            className="
-              md:hidden
-              bg-white dark:bg-gray-900
-              border-t border-gray-200 dark:border-gray-800
-            "
-          >
-            <ul className="flex flex-col px-6 py-4 gap-4">
-              {navLinks.map((link) => (
-                <li key={link.label}>
-                  <a
-                    href={link.href}
-                    onClick={() => setMenuOpen(false)}
-                    className="
-                      block text-gray-700 dark:text-gray-300
-                      hover:text-blue-600 dark:hover:text-blue-400
-                      transition-colors
-                    "
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </motion.div>
+        {/* Mobile Navigation */}
+        {open && (
+          <div className="mt-2 overflow-hidden rounded-2xl border border-black/10 bg-white/95 p-3 shadow-xl backdrop-blur-xl md:hidden dark:border-white/10 dark:bg-black/95">
+            {navigation.map((item) => (
+              <a
+                key={item.name}
+                href={item.href}
+                onClick={() => setOpen(false)}
+                className="block rounded-xl px-4 py-3 text-sm font-medium text-gray-700 transition hover:bg-black/5 hover:text-black dark:text-gray-300 dark:hover:bg-white/10 dark:hover:text-white"
+              >
+                {item.name}
+              </a>
+            ))}
+
+            <div className="my-2 border-t border-black/10 dark:border-white/10" />
+
+            <a
+              href="https://stackratechnologies.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setOpen(false)}
+              className="flex items-center justify-between rounded-xl px-4 py-3 text-sm font-semibold text-gray-800 dark:text-white"
+            >
+              STACKRA TECHNOLOGIES
+              <ArrowUpRight size={16} />
+            </a>
+
+            <a
+              href="#contact"
+              onClick={() => setOpen(false)}
+              className="mt-1 flex items-center justify-center gap-2 rounded-xl bg-black px-4 py-3 text-sm font-semibold text-white dark:bg-white dark:text-black"
+            >
+              Start a Project
+              <ArrowUpRight size={16} />
+            </a>
+          </div>
         )}
-      </AnimatePresence>
-    </nav>
+      </div>
+    </header>
   );
 }
