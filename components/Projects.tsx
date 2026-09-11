@@ -1,89 +1,155 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { projects } from "@/data/projects";
 import Image from "next/image";
+import { ArrowUpRight, ExternalLink } from "lucide-react";
+
+import { projects } from "@/data/projects";
 
 export default function Projects() {
   return (
     <section
       id="projects"
       className="
-        relative py-24 px-6 overflow-hidden
-        bg-gradient-to-br from-slate-900 via-gray-900 to-black
-        dark:from-gray-950 dark:via-gray-900 dark:to-black
+        relative overflow-hidden
+        bg-white px-6 py-24
+        dark:bg-black
+        sm:py-32
       "
     >
-      {/* 🔥 Decorative background glows */}
-      <div className="absolute -top-40 -left-40 w-[500px] h-[500px] bg-blue-500/20 rounded-full blur-3xl" />
-      <div className="absolute bottom-0 -right-40 w-[500px] h-[500px] bg-purple-500/20 rounded-full blur-3xl" />
+      {/* Background */}
+      <div className="pointer-events-none absolute -left-40 top-20 h-96 w-96 rounded-full bg-blue-500/5 blur-3xl" />
+      <div className="pointer-events-none absolute -right-40 bottom-20 h-96 w-96 rounded-full bg-purple-500/5 blur-3xl" />
 
-      <div className="relative max-w-6xl mx-auto text-center">
-        {/* Title */}
-        <motion.h2
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="text-3xl md:text-4xl font-bold mb-16 text-white"
-        >
-          Featured Projects
-        </motion.h2>
+      <div className="relative mx-auto max-w-7xl">
 
-        {/* Projects Grid */}
-        <div className="grid md:grid-cols-3 gap-10">
-          {projects.map((project, index) => (
-            <motion.div
+        {/* Header */}
+        <div className="max-w-3xl">
+          <p className="text-sm font-semibold uppercase tracking-[0.25em] text-gray-500 dark:text-gray-400">
+            Selected Work
+          </p>
+
+          <h2 className="mt-4 text-4xl font-bold tracking-tight text-gray-950 dark:text-white md:text-5xl">
+            Products, platforms
+            <span className="block text-gray-400 dark:text-gray-600">
+              and digital experiences.
+            </span>
+          </h2>
+
+          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
+            A selection of projects and digital products I've designed and
+            developed using modern web technologies.
+          </p>
+        </div>
+
+        {/* Projects */}
+        <div className="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+          {projects.map((project) => (
+            <article
               key={project.title}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1, duration: 0.5 }}
-              viewport={{ once: true }}
-              whileHover={{ y: -8, scale: 1.03 }}
-              whileTap={{scale:0.98}}
               className="
-                bg-white/90 dark:bg-gray-800/80
-                backdrop-blur-lg
-                rounded-2xl overflow-hidden
-                shadow-lg hover:shadow-2xl
-                transition-all text-left
+                group overflow-hidden rounded-3xl
+                border border-black/10
+                bg-gray-50
+                dark:border-white/10
+                dark:bg-white/[0.04]
               "
             >
-              {/* Project Image */}
-              <div className="relative w-full h-48">
-              <Image
-                src={project.image}
-                alt={project.title}
-                width={500}
-                height={300}
-                className="w-full h-48 object-cover"
-              />
+              {/* Image */}
+              <div className="relative aspect-[16/10] overflow-hidden bg-gray-100 dark:bg-gray-900">
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  className="
+                    object-cover
+                    transition-transform duration-500
+                    group-hover:scale-105
+                  "
+                />
+
+                {/* Image Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-60" />
+
+                {/* Project Number */}
+                <div className="absolute left-5 top-5 rounded-full border border-white/20 bg-black/50 px-3 py-1.5 text-xs font-semibold text-white backdrop-blur-md">
+                  Project
+                </div>
               </div>
 
               {/* Content */}
-              <div className="p-6">
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
-                  {project.title}
-                </h3>
+              <div className="p-7">
 
-                <p className="mt-3 text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
+                <div className="flex items-start justify-between gap-4">
+                  <h3 className="text-xl font-bold tracking-tight text-gray-950 dark:text-white">
+                    {project.title}
+                  </h3>
+
+                  <ArrowUpRight
+                    size={20}
+                    className="shrink-0 text-gray-400 transition-colors group-hover:text-black dark:group-hover:text-white"
+                  />
+                </div>
+
+                <p className="mt-4 text-sm leading-7 text-gray-600 dark:text-gray-400">
                   {project.description}
                 </p>
 
+                {/* Link */}
                 <a
                   href={project.link}
                   target="_blank"
+                  rel="noopener noreferrer"
                   className="
-                    inline-block mt-5
-                    text-blue-600 dark:text-blue-400
-                    font-semibold hover:underline
+                    mt-7 inline-flex items-center gap-2
+                    text-sm font-semibold
+                    text-gray-950
+                    dark:text-white
+                    hover:underline
                   "
                 >
-                  Live Demo →
+                  View Project
+                  <ExternalLink size={15} />
                 </a>
               </div>
-            </motion.div>
+            </article>
           ))}
+        </div>
+
+        {/* Bottom CTA */}
+        <div className="mt-16 border-t border-black/10 pt-10 dark:border-white/10">
+          <div className="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
+
+            <div>
+              <p className="text-sm font-semibold text-gray-500 dark:text-gray-400">
+                Have a project in mind?
+              </p>
+
+              <h3 className="mt-2 text-2xl font-bold tracking-tight text-gray-950 dark:text-white">
+                Let's build something valuable.
+              </h3>
+            </div>
+
+            <a
+              href="#contact"
+              className="
+                inline-flex items-center justify-center gap-2
+                rounded-xl
+                bg-black
+                px-6 py-3.5
+                text-sm font-semibold text-white
+                transition
+                hover:-translate-y-0.5
+                hover:shadow-xl
+                dark:bg-white
+                dark:text-black
+              "
+            >
+              Start a Project
+              <ArrowUpRight size={17} />
+            </a>
+
+          </div>
         </div>
       </div>
     </section>
