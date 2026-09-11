@@ -156,7 +156,7 @@ export default function Hero() {
               {/* Profile */}
               <div className="relative overflow-hidden rounded-2xl bg-gray-100 dark:bg-gray-900">
                 <img
-                  src="/profile/profile2.png"
+                  src="/profile/photo3.png"
                   alt="Mohammed Khan - Founder of STACKRA TECHNOLOGIES"
                   className="h-[430px] w-full object-cover object-center"
                 />
