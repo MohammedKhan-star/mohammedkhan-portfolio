@@ -1,38 +1,109 @@
 "use client";
 
-import { motion } from "framer-motion";
 import {
-  ArrowUpRight,
-  Building2,
-  Code2,
-  Lightbulb,
   Rocket,
+  BookOpen,
+  Lightbulb,
+  Code2,
+  MapPin,
+  GraduationCap,
+  BriefcaseBusiness,
+  Building2,
+  Linkedin,
+  Github,
+  Youtube,
+  Instagram,
+  ExternalLink,
 } from "lucide-react";
 
-const highlights = [
+const stats = [
   {
-    icon: Building2,
-    title: "Founder",
-    description:
-      "Building STACKRA TECHNOLOGIES with a focus on practical software and AI solutions.",
+    value: "50+",
+    label: "Projects Delivered",
   },
   {
-    icon: Code2,
-    title: "Software Engineer",
+    value: "100+",
+    label: "Clients & Users",
+  },
+  {
+    value: "3+",
+    label: "Years Learning & Building",
+  },
+  {
+    value: "1",
+    label: "Technology Company",
+  },
+];
+
+const strengths = [
+  {
+    icon: Rocket,
+    title: "Passion for Technology",
     description:
-      "Designing and developing modern web applications and scalable business systems.",
+      "Building practical digital products that solve real-world problems.",
+  },
+  {
+    icon: BookOpen,
+    title: "Continuous Learning",
+    description:
+      "Constantly improving my knowledge across software, AI and business technology.",
   },
   {
     icon: Lightbulb,
-    title: "Problem Solver",
+    title: "Innovation",
     description:
-      "Turning real business problems into simple, useful and reliable technology.",
+      "Turning ideas into modern, scalable and useful technology solutions.",
+  },
+];
+
+const profile = [
+  {
+    icon: BriefcaseBusiness,
+    label: "Role",
+    value: "Founder & Full-Stack Developer",
   },
   {
-    icon: Rocket,
-    title: "Product Builder",
-    description:
-      "From an initial idea to development, deployment and continuous improvement.",
+    icon: Building2,
+    label: "Company",
+    value: "STACKRA TECHNOLOGIES",
+  },
+  {
+    icon: MapPin,
+    label: "Location",
+    value: "Hyderabad, India",
+  },
+  {
+    icon: GraduationCap,
+    label: "Education",
+    value: "MCA (Pursuing)",
+  },
+  {
+    icon: Code2,
+    label: "Focus",
+    value: "Software • Web • AI",
+  },
+];
+
+const socialLinks = [
+  {
+    icon: Linkedin,
+    label: "LinkedIn",
+    href: "#",
+  },
+  {
+    icon: Github,
+    label: "GitHub",
+    href: "https://github.com/MohammedKhan-star",
+  },
+  {
+    icon: Youtube,
+    label: "YouTube",
+    href: "#",
+  },
+  {
+    icon: Instagram,
+    label: "Instagram",
+    href: "#",
   },
 ];
 
@@ -40,154 +111,223 @@ export default function About() {
   return (
     <section
       id="about"
-      className="relative overflow-hidden bg-white py-24 dark:bg-black sm:py-32"
+      className="relative overflow-hidden border-t border-cyan-400/10 bg-[#020b14] py-24"
     >
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+      {/* Background glow */}
+      <div className="pointer-events-none absolute right-0 top-1/4 h-80 w-80 rounded-full bg-cyan-500/5 blur-[120px]" />
 
-        {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 25 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.6 }}
-          className="max-w-3xl"
-        >
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-gray-500 dark:text-gray-400">
-            About the Founder
-          </p>
+      <div className="mx-auto max-w-7xl px-6">
 
-          <h2 className="mt-4 text-4xl font-bold tracking-tight text-gray-950 dark:text-white sm:text-5xl">
-            I don't just write code.
-            <span className="block text-gray-400 dark:text-gray-500">
-              I build products.
-            </span>
-          </h2>
+        {/* ================= STATS ================= */}
+        <div className="mb-20 grid grid-cols-2 overflow-hidden rounded-2xl border border-cyan-400/20 bg-white/[0.025] md:grid-cols-4">
 
-          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
-            I'm Mohammed Khan, Founder of STACKRA TECHNOLOGIES and a software
-            engineer focused on building modern websites, business software,
-            AI-powered applications and digital products.
-          </p>
-        </motion.div>
-
-        {/* Main Content */}
-        <div className="mt-16 grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:items-start">
-
-          {/* Founder Story */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.7 }}
-            className="rounded-3xl border border-black/10 bg-gray-50 p-8 dark:border-white/10 dark:bg-white/5 sm:p-10"
-          >
-            <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-black text-white dark:bg-white dark:text-black">
-              <Rocket size={22} />
-            </div>
-
-            <h3 className="mt-7 text-2xl font-bold text-gray-950 dark:text-white">
-              Building with purpose
-            </h3>
-
-            <div className="mt-5 space-y-5 text-base leading-7 text-gray-600 dark:text-gray-300">
-              <p>
-                My approach to technology starts with understanding the
-                problem. A successful product is not just about writing
-                thousands of lines of code — it is about creating something
-                that people and businesses can actually use.
-              </p>
-
-              <p>
-                Through STACKRA TECHNOLOGIES, I'm working toward building
-                reliable software products that help businesses operate,
-                automate processes and grow in the digital world.
-              </p>
-
-              <p>
-                I enjoy working across product strategy, user experience,
-                software engineering and AI to turn ideas into working
-                solutions.
-              </p>
-            </div>
-
-            <a
-              href="https://stackratechnologies.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group mt-8 inline-flex items-center gap-2 text-sm font-semibold text-gray-950 dark:text-white"
+          {stats.map((stat, index) => (
+            <div
+              key={stat.label}
+              className={`p-6 text-center ${
+                index !== stats.length - 1
+                  ? "border-b border-cyan-400/10 md:border-b-0 md:border-r"
+                  : ""
+              }`}
             >
-              Explore STACKRA TECHNOLOGIES
+              <div className="text-3xl font-black text-cyan-400 sm:text-4xl">
+                {stat.value}
+              </div>
 
-              <ArrowUpRight
-                size={17}
-                className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1"
-              />
-            </a>
-          </motion.div>
+              <div className="mt-2 text-xs uppercase tracking-wider text-slate-400">
+                {stat.label}
+              </div>
+            </div>
+          ))}
 
-          {/* Highlights */}
-          <div className="grid gap-5 sm:grid-cols-2">
-            {highlights.map((item, index) => {
-              const Icon = item.icon;
-
-              return (
-                <motion.div
-                  key={item.title}
-                  initial={{ opacity: 0, y: 25 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.2 }}
-                  transition={{
-                    duration: 0.6,
-                    delay: index * 0.08,
-                  }}
-                  className="group rounded-3xl border border-black/10 bg-white p-7 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl dark:border-white/10 dark:bg-black"
-                >
-                  <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-gray-100 text-gray-900 transition-transform duration-300 group-hover:scale-110 dark:bg-white/10 dark:text-white">
-                    <Icon size={21} />
-                  </div>
-
-                  <h3 className="mt-6 text-lg font-bold text-gray-950 dark:text-white">
-                    {item.title}
-                  </h3>
-
-                  <p className="mt-3 text-sm leading-6 text-gray-600 dark:text-gray-400">
-                    {item.description}
-                  </p>
-                </motion.div>
-              );
-            })}
-          </div>
         </div>
 
-        {/* Bottom Statement */}
-        <motion.div
-          initial={{ opacity: 0, y: 25 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-          className="mt-20 border-t border-black/10 pt-10 dark:border-white/10"
-        >
-          <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
-            <div>
-              <p className="text-sm font-medium text-gray-500 dark:text-gray-400">
-                My mission
-              </p>
+        {/* ================= HEADER ================= */}
+        <div className="mb-12">
+          <p className="mb-3 text-sm font-bold tracking-[0.3em] text-cyan-400">
+            ABOUT ME
+          </p>
 
-              <p className="mt-2 max-w-3xl text-2xl font-semibold tracking-tight text-gray-950 dark:text-white sm:text-3xl">
-                Turn ideas and business problems into technology that creates
-                real value.
-              </p>
+          <h2 className="max-w-3xl text-4xl font-black leading-tight text-white sm:text-5xl">
+            Turning Ideas Into{" "}
+            <span className="text-cyan-400">
+              Real Solutions
+            </span>
+          </h2>
+        </div>
+
+        {/* ================= MAIN GRID ================= */}
+        <div className="grid gap-8 lg:grid-cols-[1.2fr_0.8fr]">
+
+          {/* LEFT CONTENT */}
+          <div>
+
+            <p className="text-lg leading-8 text-slate-300">
+              I am{" "}
+              <span className="font-semibold text-white">
+                Mohammed Khan
+              </span>
+              , Founder of{" "}
+              <a
+                href="https://stackratechnologies.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-semibold text-cyan-400 hover:underline"
+              >
+                STACKRA TECHNOLOGIES
+              </a>
+              , an Indian software, web and AI technology company focused on
+              building practical digital solutions.
+            </p>
+
+            <p className="mt-5 leading-7 text-slate-400">
+              I enjoy building modern websites, business management systems,
+              AI-powered applications and digital platforms that help
+              businesses work smarter and grow faster.
+            </p>
+
+            <p className="mt-5 leading-7 text-slate-400">
+              My goal is simple: understand a real-world problem, design the
+              right technology solution and turn the idea into a useful,
+              reliable product.
+            </p>
+
+            {/* Strengths */}
+            <div className="mt-10 grid gap-4 sm:grid-cols-3">
+
+              {strengths.map((item) => {
+                const Icon = item.icon;
+
+                return (
+                  <div
+                    key={item.title}
+                    className="rounded-2xl border border-cyan-400/10 bg-white/[0.025] p-5 transition duration-300 hover:-translate-y-1 hover:border-cyan-400/30"
+                  >
+                    <Icon
+                      size={28}
+                      className="mb-4 text-cyan-400"
+                    />
+
+                    <h3 className="text-sm font-bold text-white">
+                      {item.title}
+                    </h3>
+
+                    <p className="mt-2 text-xs leading-5 text-slate-400">
+                      {item.description}
+                    </p>
+                  </div>
+                );
+              })}
+
             </div>
 
-            <a
-              href="#contact"
-              className="inline-flex shrink-0 items-center justify-center gap-2 rounded-xl bg-black px-6 py-3.5 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:shadow-xl dark:bg-white dark:text-black"
-            >
-              Let's Build Something
-              <ArrowUpRight size={17} />
-            </a>
+            {/* Button */}
+            <div className="mt-10">
+              <a
+                href="#contact"
+                className="inline-flex items-center gap-2 rounded-full bg-cyan-400 px-6 py-3 text-sm font-bold text-slate-950 transition hover:bg-cyan-300"
+              >
+                More About Me
+                <ExternalLink size={16} />
+              </a>
+            </div>
+
           </div>
-        </motion.div>
+
+          {/* RIGHT PROFILE CARD */}
+          <div className="relative">
+
+            <div className="rounded-3xl border border-cyan-400/20 bg-white/[0.025] p-6 shadow-2xl shadow-cyan-500/5 backdrop-blur-xl">
+
+              <div className="mb-6">
+                <p className="text-xs uppercase tracking-[0.25em] text-cyan-400">
+                  Founder Profile
+                </p>
+
+                <h3 className="mt-2 text-2xl font-bold text-white">
+                  Mohammed Khan
+                </h3>
+              </div>
+
+              <div className="space-y-1">
+
+                {profile.map((item) => {
+                  const Icon = item.icon;
+
+                  return (
+                    <div
+                      key={item.label}
+                      className="flex items-center gap-4 border-t border-white/5 py-4"
+                    >
+                      <Icon
+                        size={18}
+                        className="shrink-0 text-cyan-400"
+                      />
+
+                      <div className="min-w-0">
+                        <p className="text-[10px] uppercase tracking-wider text-slate-500">
+                          {item.label}
+                        </p>
+
+                        <p className="mt-1 text-sm text-slate-200">
+                          {item.value}
+                        </p>
+                      </div>
+                    </div>
+                  );
+                })}
+
+              </div>
+
+              {/* Socials */}
+              <div className="mt-5 flex gap-3 border-t border-white/5 pt-5">
+
+                {socialLinks.map((social) => {
+                  const Icon = social.icon;
+
+                  return (
+                    <a
+                      key={social.label}
+                      href={social.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={social.label}
+                      className="flex h-10 w-10 items-center justify-center rounded-full border border-cyan-400/20 bg-white/[0.03] text-slate-300 transition hover:border-cyan-400/50 hover:bg-cyan-400/10 hover:text-cyan-400"
+                    >
+                      <Icon size={17} />
+                    </a>
+                  );
+                })}
+
+              </div>
+
+            </div>
+
+            {/* Quote Card */}
+            <div className="mt-5 rounded-3xl border border-cyan-400/10 bg-gradient-to-br from-cyan-400/[0.08] to-transparent p-7">
+
+              <p className="text-lg font-medium leading-8 text-slate-200">
+                "Technology is not just my skill,
+                <span className="block text-cyan-400">
+                  it is my purpose."
+                </span>
+              </p>
+
+              <div className="mt-6 h-px w-10 bg-cyan-400" />
+
+              <p className="mt-4 text-sm font-semibold text-white">
+                Mohammed Khan
+              </p>
+
+              <p className="mt-1 text-[10px] uppercase tracking-wider text-slate-500">
+                Founder • STACKRA TECHNOLOGIES
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
       </div>
     </section>
   );
