@@ -135,7 +135,7 @@ export default function Hero() {
             <div className="relative overflow-hidden rounded-[2rem] border border-cyan-400/20 bg-slate-900/60 shadow-2xl shadow-cyan-500/10">
 
               <Image
-                src="/images/mohammed-khan.png"
+                src="/public/profile/photo3.png"
                 alt="Mohammed Khan - Founder of STACKRA TECHNOLOGIES"
                 width={600}
                 height={700}
